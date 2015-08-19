@@ -1,13 +1,13 @@
 # ACMEParcelManager
 
-Readme file for the project containing all the information required to run and test the Java standalone application.
+Readme file for the project containing all the information required to run and test this Java application.
 
 
 ## Application Requirements:
 
 * [Requirement specification](https://pastebin.com/MDMk1LWJ)
 * [Sample Input file](https://pastebin.com/M5Uh5Bz0)
-* [Sample Output File](https://pastebin.com/hgJCYUpX)
+* [Generated Output File](https://pastebin.com/hgJCYUpX)
 
 
 ## Documentation:
@@ -46,13 +46,16 @@ mvn archetype:generate -DgroupId=com.teamsuccesso.www -DartifactId=ACMEParcelMan
 
 * See [Final Project directory structure](http://i.imgur.com/CuCmhkC.png).
 
-* [Clone this repository from eclipse ](http://www.vogella.com/tutorials/EclipseGit/article.html#clone_repository). To test and use this application, run MainApp.java. This would read/parse the file 'Input.txt' under '/src/main/resources' and generate the file 'Output.txt' there.
+* [Clone this repository from eclipse ](http://www.vogella.com/tutorials/EclipseGit/article.html#clone_repository). To test and use this application, run MainApp.java. This would read/parse the file 'SRC_InputResourceForUnitTestWith20Entries.txt' under '/src/main/resources' and generate the file 'Output.txt' there.
 
 ### Assumptions
 * As the output path has been hardcoded, please change the value of 'outputPath' to your desired location in:
   - /path/to/repo/[ACMEParcelManager]/src/main/java/com/teamsuccesso/www/assignmentOne/main/MainApp.java 
+  - /path/to/repo/[ACMEParcelManager]/src/test/java/com/teamsuccesso/www/assignmentOne/main/ApplicationMainTest.java
 
 * The scenario where coincidentally one(or more) postal code(s) may have the same number of parcel deliveries has not been taken into account. 
+
+* See 'ApplicationMainTest.java' for all the unit-test which is located at: /path/to/repo/[ACMEParcelManager]/src/test/java/com/teamsuccesso/www/assignmentOne/main/.
 
 * To be added, if necessary.
 

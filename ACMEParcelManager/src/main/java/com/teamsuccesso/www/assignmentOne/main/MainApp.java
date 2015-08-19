@@ -28,60 +28,75 @@ public class MainApp {
 	 */
 	public static void main(String[] args) {
 
+		/* 1. Get FileLoader instance */
 		FileLoader fileLoader = FileLoader.getInstance();
 
+		/* 2. Get Parcel Manager instance */
 		ParcelManager parcelManager = ParcelManager.getInstance();
 
-		/* Load the resource. */
-		InputStream inputStream = fileLoader.getClass().getResourceAsStream(
-				"/Input.txt");
+		/* 3. Load the resource. */
 
-		/* Output path. */
+		InputStream inputStream = fileLoader.getClass().getResourceAsStream(
+				"/SRC_InputResourceForUnitTestWith20Entries.txt");
+
+		@SuppressWarnings("unused")
+		InputStream inputStream_1 = fileLoader.getClass().getResourceAsStream(
+				"/SRC_InputResourceForUnitTestWithMoreThan1000Entries.txt");
+
+		/* 4. Output path. */
 		final String outputPath = "/home/sandeep/Desktop/MyDocs/repos/git-repos/public/ACMEParcelManager/ACMEParcelManager/src/main/resources/Output.txt";
 
-		/* Total number of listings to write. */
+		/* 5. Total number of listings to write. */
 		final int limitBy = 3;
 
-		/* Get the parcellist from the inputstream. */
-		List<Parcel> parcels = parcelManager.getParcelList(inputStream);
+		/* 6. Get the parcellist from the inputstream. */
+		if (inputStream != null) {
+			List<Parcel> parcels = parcelManager.getParcelList(inputStream);
 
-		/* The map of ranked Postal Codes. */
-		Map<String, Integer> rankedPostalCodes = new LinkedHashMap<String, Integer>();
+			/* 7a. The map of ranked Postal Codes. */
+			Map<String, Integer> rankedPostalCodes = new LinkedHashMap<String, Integer>();
 
-		/* The File writer. */
-		FileWriter fileWriter = null;
+			/* 7b. The File writer. */
+			FileWriter fileWriter = null;
 
-		/* The Buffered writer. */
-		BufferedWriter bufferedWriter = null;
+			/* 7c. The Buffered writer. */
+			BufferedWriter bufferedWriter = null;
 
-		/*
-		 * Sort the parcel list, group by postal code and get list of top 3
-		 * entries.
-		 */
-		List<Entry<String, List<Parcel>>> sortedEntries = parcelManager
-				.sortParcelListGroupByPostalCode(parcels, limitBy);
+			/*
+			 * 8. Sort the parcel list, group by postal code and get list of top
+			 * 3 entries.
+			 */
+			List<Entry<String, List<Parcel>>> sortedEntries = parcelManager
+					.sortParcelListGroupByPostalCode(parcels, limitBy);
 
-		/* Get the final rankwise map of postalcodes by maximum delivery count. */
-		rankedPostalCodes = parcelManager
-				.rankPostalCodeByMaxDeliveryCount(sortedEntries);
+			/*
+			 * 9. Get the final rankwise map of postalcodes by maximum delivery
+			 * count.
+			 */
+			rankedPostalCodes = parcelManager
+					.rankPostalCodeByMaxDeliveryCount(sortedEntries);
 
-		/* Write the map to file and close streams. */
+			/* 10. Write the map to file and close streams. */
 
-		try {
-			fileWriter = new FileWriter(outputPath);
-			bufferedWriter = new BufferedWriter(fileWriter);
-			parcelManager.writeRankedPostalCodesToFile(limitBy, outputPath,
-					rankedPostalCodes, bufferedWriter);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
 			try {
-				fileWriter.close();
-				bufferedWriter.close();
+				fileWriter = new FileWriter(outputPath);
+				bufferedWriter = new BufferedWriter(fileWriter);
+				parcelManager.writeRankedPostalCodesToFile(limitBy, outputPath,
+						rankedPostalCodes, bufferedWriter);
 			} catch (IOException e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					fileWriter.close();
+					bufferedWriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			System.out.println("DONE. Output written to " + outputPath + "!");
+		} else {
+			System.out
+					.println("OOPS....PROBLEM RETRIEVING PARCELS FROM INPUTSTREAM!!!");
 		}
-		System.out.println("DONE. Output written to "+outputPath+"!");
 	}
 }

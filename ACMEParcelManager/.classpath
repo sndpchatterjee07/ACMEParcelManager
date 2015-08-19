@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Guava"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JUnit"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EqualsVerifier"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hamcrest"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

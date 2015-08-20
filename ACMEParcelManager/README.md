@@ -49,7 +49,7 @@ mvn archetype:generate -DgroupId=com.teamsuccesso.www -DartifactId=ACMEParcelMan
 * [Clone this repository from eclipse ](http://www.vogella.com/tutorials/EclipseGit/article.html#clone_repository). To test and use this application, run MainApp.java. This would read/parse the file 'SRC_InputResourceForUnitTestWith20Entries.txt' under '/src/main/resources' and generate the file 'Output.txt' there.
 
 ### Assumptions
-* As the output path has been hardcoded, to avoid any exceptions - please change the value of 'outputPath' to your desired location in:
+* As the output path has been hardcoded, to avoid any exceptions - please ensure that the value of 'outputPath' is set to your desired location before running the application. Files where this modification needs to be done are:
   - /path/to/repo/[ACMEParcelManager]/src/main/java/com/teamsuccesso/www/assignmentOne/main/MainApp.java 
   - /path/to/repo/[ACMEParcelManager]/src/test/java/com/teamsuccesso/www/assignmentOne/main/ApplicationMainTest.java
 

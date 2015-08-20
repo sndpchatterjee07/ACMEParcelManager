@@ -43,7 +43,12 @@ public class MainApp {
 		InputStream inputStream_1 = fileLoader.getClass().getResourceAsStream(
 				"/SRC_InputResourceForUnitTestWithMoreThan1000Entries.txt");
 
-		/* 4. Output path. */
+		/*
+		 * 4. Output path.
+		 * 
+		 * Please change this to your desired location to avoid any exception. 
+		 * For example: final String outputPath = "/home/sandeep/Desktop/Output.txt";
+		 */
 		final String outputPath = "/home/sandeep/Desktop/MyDocs/repos/git-repos/public/ACMEParcelManager/ACMEParcelManager/src/main/resources/Output.txt";
 
 		/* 5. Total number of listings to write. */
